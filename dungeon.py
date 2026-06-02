@@ -8,11 +8,6 @@ ROWS = 24
 COLS = 80
 OFFSET_X = 32
 OFFSET_Y = 7
-WALL_H = 'w'
-WALL_V = 'W'
-DOOR_H = 'd'
-DOOR_V = 'D'
-EMPTY = 'e'
 FLOOR = '.'
 PLAYER = [
   '!_o_',
