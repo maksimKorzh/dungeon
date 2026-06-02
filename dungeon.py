@@ -78,6 +78,27 @@ def print_cell(col, row, x, y):
         if r == 3 and c in range(1, 5): screen.addch(r+y, c+x, render_char(dungeon[row][col][2]))
         if c == 0 and r in range(1, 3): screen.addch(r+y, c+x, render_char(dungeon[row][col][3]))
         if c == 5 and r in range(1, 3): screen.addch(r+y, c+x, render_char(dungeon[row][col][4]))
+        if r == 0 and c == 0: screen.addch(r+y, c+x, '#')
+        if r == 0 and c == 5: screen.addch(r+y, c+x, '#')
+        if r == 3 and c == 0: screen.addch(r+y, c+x, '#')
+        if r == 3 and c == 5: screen.addch(r+y, c+x, '#')
+        try:
+          if r == 0 and c == 0:
+            if dungeon[row][col][1] in 'eo' and \
+               dungeon[row][col][3] in 'eo' and \
+               dungeon[row-1][col][2] in 'eo' and \
+               dungeon[row][col-1][1] in 'eo':
+              screen.addch(r+y, c+x, ' ')
+          if r == 0 and c == 5:
+            if dungeon[row][col][1] in 'eo' and dungeon[row][col][4] in 'eo':
+              screen.addch(r+y, c+x, ' ')
+          if r == 3 and c == 0:
+            if dungeon[row][col][2] in 'eo' and dungeon[row][col][3] in 'eo':
+              screen.addch(r+y, c+x, ' ')
+          if r == 3 and c == 5:
+            if dungeon[row][col][2] in 'eo' and dungeon[row][col][4] in 'eo':
+              screen.addch(r+y, c+x, ' ')
+        except: pass
         #if r in range(1, 3) and c in range(1, 5): screen.addch(r+y, c+x, dungeon[row][col][0])
 
 def print_player(x, y):
