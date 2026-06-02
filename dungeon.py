@@ -18,6 +18,8 @@ from random import randrange, choice
 
 ROWS = 24
 COLS = 80
+OFFSET_X = 32
+OFFSET_Y = 7
 
 WALL_H = 'w'
 WALL_V = 'W'
@@ -46,8 +48,8 @@ PLAYER = [
 
 with open('map.json') as f: dungeon = json.loads(f.read())
 
-player_x = 0
-player_y = 0
+player_x = 15
+player_y = 29
 
 #########################
 #
@@ -58,23 +60,25 @@ player_y = 0
 def render_char(c):
   return {
     'w': '#',
-    'd': '-',
-    's': '+',
+    'd': '+',
+    's': '*',
     'W': '#',
-    'D': '|',
-    'S': '+',
-    'e': '.',
+    'D': '+',
+    'S': '*',
+    'e': ' ',
     'o': ' '
   }[c]
 
 def print_cell(col, row, x, y):
   for r in range(4):
     for c in range(6):
-      if r == 0 and c in range(1, 5): screen.addch(r+y, c+x, render_char(dungeon[row][col][1]))
-      if r == 3 and c in range(1, 5): screen.addch(r+y, c+x, render_char(dungeon[row][col][2]))
-      if c == 0 and r in range(1, 3): screen.addch(r+y, c+x, render_char(dungeon[row][col][3]))
-      if c == 5 and r in range(1, 3): screen.addch(r+y, c+x, render_char(dungeon[row][col][4]))
-      #if r in range(1, 3) and c in range(1, 5): screen.addch(r+y, c+x, dungeon[row][col][0])
+      if r == 2 and c == 1: screen.addstr(r+y, r+x-1, 'EXIT' if dungeon[row][col][0] == 'x' else '    ')
+      else:
+        if r == 0 and c in range(1, 5): screen.addch(r+y, c+x, render_char(dungeon[row][col][1]))
+        if r == 3 and c in range(1, 5): screen.addch(r+y, c+x, render_char(dungeon[row][col][2]))
+        if c == 0 and r in range(1, 3): screen.addch(r+y, c+x, render_char(dungeon[row][col][3]))
+        if c == 5 and r in range(1, 3): screen.addch(r+y, c+x, render_char(dungeon[row][col][4]))
+        #if r in range(1, 3) and c in range(1, 5): screen.addch(r+y, c+x, dungeon[row][col][0])
 
 def print_player(x, y):
   for r in range(2):
@@ -84,8 +88,8 @@ def print_player(x, y):
 def render_dungeon():
   for row in range(3):
     for col in range(3):
-      if row == 1 and col == 1: print_player(10+col*5, 3+row*3)
-      else: print_cell(col+player_x, row+player_y, 10+col*5, 3+row*3)
+      if row == 1 and col == 1: print_player(OFFSET_X+col*5, OFFSET_Y+row*3)
+      else: print_cell(col+player_x, row+player_y, OFFSET_X+col*5, OFFSET_Y+row*3)
             #print_cell(col+player_x, row+player_y, col*7, row*4) cell spacing
   screen.refresh()
 

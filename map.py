@@ -20,6 +20,7 @@ SECRET_H = 's'
 SECRET_V = 'S'
 EMPTY = 'e'
 FLOOR = '.'
+EXIT = 'x'
 
 # Map
 map = []
@@ -99,6 +100,7 @@ for row in range(30):
   line.append([FLOOR, 'o', 'o', 'W', 'o'])
   map.append(line)
 map.append([[FLOOR, 'w', 'o', 'o', 'o'] if i in range(1, 31) else ['FLOOR', 'o', 'o', 'o', 'o' ] for i in range(32)])
+map[-1][16] = [EXIT, 'e', 'o', 'o', 'o']
 
 # Write dataset to JSON
 with open('map.json', 'w') as f: f.write(json.dumps(map, indent=2))
