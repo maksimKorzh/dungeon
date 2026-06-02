@@ -59,4 +59,9 @@ for row in range(30):
 map.append([['.', 'w', 'o', 'o', 'o'] if i in range(1, 31) else ['.', 'o', 'o', 'o', 'o' ] for i in range(32)])
 map[-1][16] = ['x', 'e', 'o', 'o', 'o']
 
+for row in range(32):
+  for col in range(32):
+    if map[row][col][1] and map[row][col][2] != 'e': map[row][col][0] = '^'
+    if map[row][col][3] and map[row][col][4] != 'e': map[row][col][0] = '^'
+
 with open('map.json', 'w') as f: f.write(json.dumps(map, indent=2))

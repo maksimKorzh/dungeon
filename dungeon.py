@@ -84,6 +84,7 @@ def print_cell(col, row, x, y):
               if dungeon[row][col][2] in 'eo' and dungeon[row][col][4] in 'eo':
                 screen.addch(r+y, c+x, ' ')
           except: pass
+        if r in range(1, 3) and c in range(1, 5): screen.addch(r+y, c+x, dungeon[row][col][0])
 
 def print_player(x, y):
   for r in range(2):
