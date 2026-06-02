@@ -46,8 +46,8 @@ PLAYER = [
 
 with open('map.json') as f: dungeon = json.loads(f.read())
 
-offset_x = 0
-offset_y = 0
+player_x = 0
+player_y = 0
 
 #########################
 #
@@ -85,8 +85,8 @@ def render_dungeon():
   for row in range(3):
     for col in range(3):
       if row == 1 and col == 1: print_player(10+col*5, 3+row*3)
-      else: print_cell(col+offset_x, row+offset_y, 10+col*5, 3+row*3)
-            #print_cell(col+offset_x, row+offset_y, col*7, row*4) cell spacing
+      else: print_cell(col+player_x, row+player_y, 10+col*5, 3+row*3)
+            #print_cell(col+player_x, row+player_y, col*7, row*4) cell spacing
   screen.refresh()
 
 #########################
@@ -106,13 +106,13 @@ curses.use_default_colors()
 curses.curs_set(0)
 
 def read_key():
-  global offset_x, offset_y
+  global player_x, player_y
   ch = -1
   while ch == -1: ch = screen.getch()
-  if ch == ord('j') and offset_y < len(dungeon)-3: offset_y += 1
-  elif ch == ord('k') and offset_y > 0: offset_y -= 1
-  elif ch == ord('h') and offset_x > 0: offset_x -= 1
-  elif ch == ord('l') and offset_x < len(dungeon[0])-3: offset_x += 1
+  if ch == ord('j') and player_y < len(dungeon)-3 and dungeon[player_y+1][player_x+1][2] in 'ed': player_y += 1
+  elif ch == ord('k') and player_y > 0 and dungeon[player_y+1][player_x+1][1] in 'ed': player_y -= 1
+  elif ch == ord('h') and player_x > 0 and dungeon[player_y+1][player_x+1][3] in 'eD': player_x -= 1
+  elif ch == ord('l') and player_x < len(dungeon[0])-3 and dungeon[player_y+1][player_x+1][4] in 'eD': player_x += 1
   if ch == ord('q'):
     curses.endwin()
     print(len(dungeon[0]), len(dungeon[1]), len(dungeon[-1]))
