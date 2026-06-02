@@ -27,6 +27,11 @@ EMPTY = 'e'
 
 FLOOR = '.'
 
+PLAYER = [
+  '!_o_',
+  ' _|*',
+]
+
 #########################
 #
 #        VARIABLES
@@ -39,147 +44,8 @@ FLOOR = '.'
 #
 # [content, up, down, left, right]
 
-dungeon = [
-  [
-    [FLOOR, WALL_H, EMPTY, WALL_V, EMPTY],
-    [FLOOR, WALL_H, EMPTY, EMPTY, WALL_V],
-    [FLOOR, WALL_H, EMPTY, WALL_V, EMPTY],
-    [FLOOR, WALL_H, EMPTY, EMPTY, DOOR_V],
-    [FLOOR, WALL_H, EMPTY, DOOR_V, EMPTY], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, EMPTY, EMPTY, WALL_V, EMPTY],
-    [FLOOR, EMPTY, EMPTY, EMPTY, DOOR_V],
-    [FLOOR, EMPTY, WALL_H, DOOR_V, EMPTY],
-    [FLOOR, EMPTY, WALL_H, EMPTY, WALL_V],
-    [FLOOR, EMPTY, WALL_H, WALL_V, EMPTY], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, EMPTY, EMPTY, WALL_V, EMPTY],
-    [FLOOR, EMPTY, EMPTY, EMPTY, DOOR_V],
-    [FLOOR, WALL_H, WALL_H, DOOR_V, EMPTY],
-    [FLOOR, WALL_H, EMPTY, EMPTY, EMPTY],
-    [FLOOR, WALL_H, EMPTY, EMPTY, WALL_V], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, EMPTY, WALL_H, WALL_V, EMPTY],
-    [FLOOR, EMPTY, WALL_H, EMPTY, DOOR_V],
-    [FLOOR, WALL_H, EMPTY, DOOR_V, WALL_V],
-    [FLOOR, EMPTY, DOOR_H, WALL_V, EMPTY],
-    [FLOOR, EMPTY, WALL_H, EMPTY, WALL_V], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, WALL_H, EMPTY, WALL_V, EMPTY],
-    [FLOOR, WALL_H, EMPTY, EMPTY, WALL_V],
-    [FLOOR, EMPTY, EMPTY, WALL_V, WALL_V],
-    [FLOOR, DOOR_H, EMPTY, WALL_V, EMPTY],
-    [FLOOR, WALL_H, EMPTY, EMPTY, DOOR_V], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, EMPTY, WALL_H, WALL_V, EMPTY],
-    [FLOOR, EMPTY, DOOR_H, EMPTY, WALL_V],
-    [FLOOR, EMPTY, EMPTY, WALL_V, WALL_V], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, WALL_H, EMPTY, WALL_V, EMPTY],
-    [FLOOR, DOOR_H, EMPTY, EMPTY, WALL_V],
-    [FLOOR, EMPTY, EMPTY, WALL_V, WALL_V], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, EMPTY, DOOR_H, WALL_V, EMPTY],
-    [FLOOR, EMPTY, WALL_H, EMPTY, WALL_V],
-    [FLOOR, EMPTY, EMPTY, WALL_V, EMPTY], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, DOOR_H, EMPTY, WALL_V, EMPTY],
-    [FLOOR, WALL_H, WALL_H, EMPTY, EMPTY],
-    [FLOOR, EMPTY, WALL_H, EMPTY, WALL_V], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, EMPTY, EMPTY, WALL_V, WALL_V],
-    [FLOOR, WALL_H, EMPTY, WALL_V, EMPTY],
-    [FLOOR, WALL_H, EMPTY, EMPTY, DOOR_V], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, EMPTY, DOOR_H, WALL_V, WALL_V],
-    [FLOOR, EMPTY, DOOR_H, WALL_V, EMPTY],
-    [FLOOR, EMPTY, WALL_H, EMPTY, WALL_V], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, DOOR_H, EMPTY, WALL_V, EMPTY],
-    [FLOOR, DOOR_H, EMPTY, EMPTY, DOOR_V],
-    [FLOOR, WALL_H, WALL_H, DOOR_V, EMPTY], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, EMPTY, DOOR_H, WALL_V, EMPTY],
-    [FLOOR, EMPTY, WALL_H, EMPTY, DOOR_V],
-    [FLOOR, WALL_H, WALL_H, DOOR_V, EMPTY], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, DOOR_H, EMPTY, WALL_V, EMPTY],
-    [FLOOR, WALL_H, WALL_H, EMPTY, EMPTY],
-    [FLOOR, WALL_H, WALL_H, EMPTY, EMPTY], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, EMPTY, EMPTY, WALL_V, WALL_V],
-    [FLOOR, WALL_H, EMPTY, WALL_V, EMPTY],
-    [FLOOR, WALL_H, EMPTY, EMPTY, EMPTY], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, EMPTY, EMPTY, WALL_V, WALL_V],
-    [FLOOR, EMPTY, WALL_H, WALL_V, EMPTY],
-    [FLOOR, EMPTY, DOOR_H, EMPTY, WALL_V], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [FLOOR, EMPTY, EMPTY, WALL_V, WALL_V],
-    [FLOOR, WALL_H, EMPTY, WALL_V, EMPTY],
-    [FLOOR, DOOR_H, EMPTY, EMPTY, WALL_V], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-  [
-    [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-  ],
-]
-
-dungeon = []
-
-import json
 with open('map.json') as f: dungeon = json.loads(f.read())
+
 offset_x = 0
 offset_y = 0
 
@@ -197,7 +63,8 @@ def render_char(c):
     'W': '#',
     'D': '|',
     'S': '+',
-    'e': ' '
+    'e': '.',
+    'o': ' '
   }[c]
 
 def print_cell(col, row, x, y):
@@ -209,11 +76,17 @@ def print_cell(col, row, x, y):
       if c == 5 and r in range(1, 3): screen.addch(r+y, c+x, render_char(dungeon[row][col][4]))
       #if r in range(1, 3) and c in range(1, 5): screen.addch(r+y, c+x, dungeon[row][col][0])
 
+def print_player(x, y):
+  for r in range(2):
+    for c in range(4):
+      screen.addch(r+y+1, c+x+1, PLAYER[r][c])
+
 def render_dungeon():
   for row in range(3):
     for col in range(3):
-      print_cell(col+offset_x, row+offset_y, 10+col*5, 3+row*3)
-      #print_cell(col+offset_x, row+offset_y, col*7, row*4)
+      if row == 1 and col == 1: print_player(10+col*5, 3+row*3)
+      else: print_cell(col+offset_x, row+offset_y, 10+col*5, 3+row*3)
+            #print_cell(col+offset_x, row+offset_y, col*7, row*4) cell spacing
   screen.refresh()
 
 #########################
@@ -242,6 +115,7 @@ def read_key():
   elif ch == ord('l') and offset_x < len(dungeon[0])-3: offset_x += 1
   if ch == ord('q'):
     curses.endwin()
+    print(len(dungeon[0]), len(dungeon[1]), len(dungeon[-1]))
     sys.exit()
 
 while True:

@@ -76,21 +76,11 @@ for col in range(31):
     item_x = start_x+width_x*col
     item_y = start_y+width_y*row
     pixel = pixels[item_x, item_y]
-    if pixel[0] in range(0, 12):
-      line.append(WALL_V)
-      #print('WALL_V', item_x, item_y, pixels[item_x, item_y])
-    elif pixel[0] in range(170, 194):
-      line.append(EMPTY)
-      #print('EMPTY', item_x, item_y, pixels[item_x, item_y])
-    elif pixel[0] in range(195, 250):
-      line.append(DOOR_V)
-      #print('DOOR_V', item_x, item_y, pixels[item_x, item_y])
-    elif pixel[0] in range(128, 169):
-      line.append(SECRET_V)
-      #print('SECRET_V', item_x, item_y, pixels[item_x, item_y])
-    else:
-      print('ERROR', item_x, item_y, pixels[item_x, item_y])
-      line.append('ERROR')
+    if pixel[0] in range(0, 12): line.append(WALL_V)
+    elif pixel[0] in range(170, 194): line.append(EMPTY)
+    elif pixel[0] in range(195, 250): line.append(DOOR_V)
+    elif pixel[0] in range(128, 169): line.append(SECRET_V)
+    else: line.append('ERROR')
     
   # Populate lines Y
   lines_y.append(line)
@@ -99,12 +89,16 @@ for col in range(31):
 for row in range(30):
   line = []
   for col in range(30):
+    if col == 0: line.append([FLOOR, 'o', 'o', 'o', 'W'])
     up = lines_x[row][col]
     down = lines_x[row+1][col]
     left = lines_y[col][row]
     right = lines_y[col+1][row]
     line.append([FLOOR, up, down, left, right])
+  if row == 0: map.append([[FLOOR, 'o', 'w', 'o', 'o'] for i in range(32)])
+  line.append([FLOOR, 'o', 'o', 'W', 'o'])
   map.append(line)
+map.append([[FLOOR, 'w', 'o', 'o', 'o'] if i in range(1, 31) else ['FLOOR', 'o', 'o', 'o', 'o' ] for i in range(32)])
 
 # Write dataset to JSON
 with open('map.json', 'w') as f: f.write(json.dumps(map, indent=2))
