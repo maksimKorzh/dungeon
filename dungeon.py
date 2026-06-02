@@ -176,6 +176,10 @@ dungeon = [
   ],
 ]
 
+dungeon = []
+
+import json
+with open('map.json') as f: dungeon = json.loads(f.read())
 offset_x = 0
 offset_y = 0
 
@@ -187,11 +191,13 @@ offset_y = 0
 
 def render_char(c):
   return {
-    'w': 'w',
-    'd': 'd',
-    'W': 'W',
-    'D': 'D',
-    'e': '.'
+    'w': '#',
+    'd': '-',
+    's': '+',
+    'W': '#',
+    'D': '|',
+    'S': '+',
+    'e': ' '
   }[c]
 
 def print_cell(col, row, x, y):
@@ -207,7 +213,7 @@ def render_dungeon():
   for row in range(3):
     for col in range(3):
       print_cell(col+offset_x, row+offset_y, 10+col*5, 3+row*3)
-      #print_cell(col+offset_x, row+offset_y, 10+col*7, 3+row*4)
+      #print_cell(col+offset_x, row+offset_y, col*7, row*4)
   screen.refresh()
 
 #########################
@@ -230,10 +236,10 @@ def read_key():
   global offset_x, offset_y
   ch = -1
   while ch == -1: ch = screen.getch()
-  if ch == ord('j'): offset_y += 1
-  elif ch == ord('k'): offset_y -= 1
-  elif ch == ord('h'): offset_x -= 1
-  elif ch == ord('l'): offset_x += 1
+  if ch == ord('j') and offset_y < len(dungeon)-3: offset_y += 1
+  elif ch == ord('k') and offset_y > 0: offset_y -= 1
+  elif ch == ord('h') and offset_x > 0: offset_x -= 1
+  elif ch == ord('l') and offset_x < len(dungeon[0])-3: offset_x += 1
   if ch == ord('q'):
     curses.endwin()
     sys.exit()
