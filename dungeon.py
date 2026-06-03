@@ -1,5 +1,6 @@
 import sys
 import json
+import time
 import curses
 import string
 from random import randrange, choice
@@ -12,6 +13,10 @@ FLOOR = '.'
 PLAYER = [
   '!_o_',
   ' _|*',
+]
+CHEST = [
+  ' __ ',
+  '|__|'
 ]
 
 with open('./map/map.json') as f: dungeon = json.loads(f.read())
@@ -32,6 +37,7 @@ hidden_doors = [
   [[15, 29, 4], [16, 29, 3]],
   [[28, 30, 4], [29, 30, 3]]
 ]
+loot = []
 player_x = 15
 player_y = 29
 
@@ -86,7 +92,7 @@ def print_cell(col, row, x, y):
             if r == 0 and c == 0:
               if dungeon[row][col][1] in 'eo' and \
                  dungeon[row][col][3] in 'eo' and \
-                 dungeon[row-1][col][2] in 'eo' and \
+                 dungeon[row-1][col][3] in 'eo' and \
                  dungeon[row][col-1][1] in 'eo':
                 screen.addch(r+y, c+x, ' ')
             if r == 0 and c == 5:
@@ -103,10 +109,15 @@ def print_cell(col, row, x, y):
                 screen.addch(r+y, c+x, ' ')
           except: pass
 
-def print_player(x, y):
+def render_player(x, y):
   for r in range(2):
     for c in range(4):
       screen.addch(r+y+1, c+x+1, PLAYER[r][c])
+
+def render_loot(x, y):
+  for r in range(2):
+    for c in range(4):
+      screen.addch(r+y+1, c+x+1, CHEST[r][c])
 
 def render_dungeon():
   screen.addstr(OFFSET_Y+12, 0, ' ' * 80)
@@ -119,7 +130,7 @@ def render_dungeon():
          row == 0 and col == 2 or \
          row == 2 and col == 0 or \
          row == 2 and col == 2: continue
-      elif row == 1 and col == 1: print_player(OFFSET_X+col*5, OFFSET_Y+row*3)
+      elif row == 1 and col == 1: render_player(OFFSET_X+col*5, OFFSET_Y+row*3)
       else: print_cell(col+player_x, row+player_y, OFFSET_X+col*5, OFFSET_Y+row*3)
   screen.refresh()
 
@@ -142,9 +153,9 @@ def take_action():
       elif ch == curses.KEY_LEFT and dungeon[player_y+1][player_x+1][3] in 'DS^': player_x -= 1
       elif ch == curses.KEY_RIGHT and dungeon[player_y+1][player_x+1][4] in 'DS^': player_x += 1
     else:
-      screen.addstr(OFFSET_Y+12, OFFSET_X, 'Breaking failed!')
+      screen.addstr(OFFSET_Y+12, OFFSET_X+1, 'Breaking fails!')
       screen.refresh()
-      ch = read_key()
+      time.sleep(0.3)
   elif ch == curses.KEY_DOWN and player_y < len(dungeon)-3 and dungeon[player_y+1][player_x+1][2] == 'e': player_y += 1
   elif ch == curses.KEY_UP and player_y > 0 and dungeon[player_y+1][player_x+1][1] == 'e': player_y -= 1
   elif ch == curses.KEY_LEFT and player_x > 0 and dungeon[player_y+1][player_x+1][3] == 'e': player_x -= 1
@@ -152,6 +163,23 @@ def take_action():
   if ch == ord('q'):
     curses.endwin()
     sys.exit()
+
+def create_loot(name, x, y, amount):
+  return {
+    'name': name,
+    'x': x,
+    'y': y,
+    'amount': amount
+  }
+
+def fill_dungeon():
+  pass
+
+def init_level():
+  for door_pair in hidden_doors:
+    if randrange(0, 7) != 3:
+      for door in door_pair:
+        dungeon[door[1]][door[0]][door[2]] = '^'
 
 screen = curses.initscr()
 screen.nodelay(1)
@@ -162,13 +190,8 @@ curses.start_color()
 curses.use_default_colors()
 curses.curs_set(0)
 
-def init_level():
-  for door_pair in hidden_doors:
-    if randrange(0, 7) != 3:
-      for door in door_pair:
-        dungeon[door[1]][door[0]][door[2]] = '^'
-
 init_level()
+#fill_dungeon()
 while True:
   render_dungeon()
   take_action()
