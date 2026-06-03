@@ -1,0 +1,104 @@
+Experience     Abilities and Spells
+
+0              Level 1: 1 hit die, 1M, 0C
+1500           1 C
+2000           Level 2: 2 hit dice
+2500           2 M
+3000           2 C
+4000           Level 3: 3 hit dice
+5000           3+1 M
+6000           2+1 C
+8000           Level 4; 4 hit dice
+10000          4+2 M
+12000          2+2 C
+16000          Level 5: 5+1 hit dice
+20000          Retirement with honor!
+
+Explanations: "Hit dice" specifies the number of
+eight-sided dice rolled to determine how many
+hits you can take before dying. The sum of the
+rolls is modified by additions/subtractions due to
+your constitution.
+
+Spells -- Magical and Clerical
+
+As your experience increases you will be able to
+use more spells in each trip. E.g., if your quota
+(magical) is given as '3+1', you can use 3 first-
+level spells and 1 second-level spell during the
+dungeon trip. (Note that you are assumed to ‘know’
+all the spells; the limit is on your memory and
+energy available.)
+
+Magic:    Level 1                Level 2
+
+    1.    Sleep                  ESP
+    2.    Charm                  Speed
+    3.    Light                  Invisibility
+    4.    Magic Missile          Blastbolt
+
+Clerical: Level 1                Level 2
+
+    1.    Cure Wounds            Serious Cure
+    2.    Detect Evil            Hold Person
+    3.    Protection from Evil   Continual Light
+    4.    Pray                   Dispel Myth
+
+The magic spells do the following:
+
+Sleep -- Puts an opponent to sleep. There is no
+chance of failure, but it works only on enemies up
+to level 4, and not at all on undead.
+
+Charm -- Opponent is hypnotized into killing him-
+self. Spell may fail. Works on any level, but only
+on men and goblin-types.
+
+Light* -- Casts light around you, reduces your
+chance of being surprised by 1/3. (24 turns)
+
+Magic Missile -- Creates a magic arrow that tries
+to strike your enemy. Damage 2-7 hits if it strikes
+(double damage on undead) .
+
+ESP* -- eliminates surprise by any but undead, since
+the latter have no ‘brain-waves'.
+
+Speed -- Doubles your movement/action rate for 24
+turns; guarantees first strike at any opponent.
+
+Invisibility* -- Useful for flight from disaster.
+Lasts 4 turns. You may not attack while invisible.
+
+Blastbolt -- A last-gasp shot at a superior enemy,
+it puts 5-30 hits on him (3-15 if he is able to
+duck part of it). This spell exhausts all your
+remaining energy for magic in the given trip.
+
+The clerical spells are as follows:
+
+Cure Wounds: Replaces 2-7 hits that you have lost
+in battle. Of course, you can't get more than you
+started with.
+(Serious Cure is the same, but 4-14 hits.)
+
+Detect Evil*: Eliminates chance of surprise except
+by animals (which are neutral). Runs 36 turns.
+
+Protection from Evil: Reduces the chance of being
+struck by an enemy by 5% (10% undead). 24 turns.
+
+Pray: Increases your chance of striking an enemy
+by 5% (10% undead). Lasts one combat.
+
+Hold: This clerical ‘charm’ is 10% more likely to
+succeed than the magical Charm spell. Only men and
+goblin-types can be held.
+
+Continual Light* -- Reduces your chance of being
+surprised by 2/3. Lasts the entire trip.
+
+Dispel Myth: Disturbs mythical monsters (only) when
+you refuse to believe in them. They may leave in
+disgust! Not too effective on dragons, who are very
+sure of themselves.

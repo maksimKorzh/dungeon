@@ -1,0 +1,30 @@
+Your personal characteristics are your strength,
+intelligence, constitution, dexterity, and hits.
+The first four each range from 3 to 18 and have
+various effects on your capabilities:
+
+Strength: Your chance of hitting a monster in
+combat depends on your level (see below) and is
+modified by your strength. For strength 7-15 there
+is no change. For strength 16-18 the hitting
+probability is 5-15% higher and you do extra damage
+of +1 to +3 each time. For strength 3-6 the change
+is -5% and -1!
+
+Intelligence: In a manner similar to strength, your
+intelligence modifies the probability that your
+spells will affect the monster (and the damage in
+the case of Magic Missile and Blastbolt).
+
+Constitution modifies the number of hits you can
+take without dying. (7-14, no change; 15-17, +1
+per level; 18, +2 per level; 3-6, -1 per level.)
+
+Dexterity determines who will strike first in a
+battle encounter, you or the monster.
+
+Hits are your lifeblood! You can keep going as long
+as you have one hit left. Cure spells restore your
+hits. For every level you have you get 1-8 hits
+(at random, when you make level), plus 1 at the
+first level, modified by constitution as above.

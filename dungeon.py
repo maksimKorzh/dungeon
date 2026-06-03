@@ -14,7 +14,7 @@ PLAYER = [
   ' _|*',
 ]
 
-with open('map.json') as f: dungeon = json.loads(f.read())
+with open('./map/map.json') as f: dungeon = json.loads(f.read())
 player_x = 15
 player_y = 29
 

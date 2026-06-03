@@ -1,0 +1,10 @@
+TREASURE
+
+Treasure will consist of gold coins (the unit of
+currency), silver coins (worth 1/10 of gold), gems
+valued from 100-600 gold each, and jewel pieces
+valued from 1000-6000 gold each.
+
+You may also find a magic sword +1 or +2, which
+besides being very useful is worth 500 or 1000
+points experience.

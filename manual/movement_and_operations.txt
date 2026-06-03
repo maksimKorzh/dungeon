@@ -1,0 +1,72 @@
+MOVEMENT, BATTLE, OPERATIONS
+
+When you are in the dungeon you will always have
+some choice of operations. If a monster is present
+you must fight or run. If treasure is present you
+must choose whether to pick it up. At any other time
+you may move or cast spells.
+
+Movement follows the arrows UP, RIGHT, DOWN, LEFT.
+
+To break through a door, press ‘b' followed
+by an arrow indicating which door.
+
+Secret doors exist; these may be broken through
+as any other door. However, unless you detect them
+(1/6 chance when you pass) they will still appear
+to be walls.
+
+NOTE: Doors always slam shut again.
+
+Monsters may live in the rooms you enter. Treasure
+will be found only in rooms. Monsters can also roam
+around the corridors; these tend to turn up at
+random intervals during your trip.
+
+You cannot run from a monster when you are in a
+room. You can do so in a corridor, but you may fail
+to escape (chance varies with the monster level).
+
+When you and a monster have combat, you take
+alternating swings at each other (dexterity gives
+the first swing) until one is dead.
+
+Whenever you kill a monster you gain experience
+points, and the nastier the monster, the more
+points you get. Experience ranges from 10 points
+for a kobold or giant rat to 840 points for a
+dragon (lots of luck!). You also gain experience
+for any treasure you bring out of the dungeon
+(see the section on treasure).
+
+As your experience increases, you become more
+powerful. The section on magic/clerical spells
+includes the experience vs. level table.
+
+Your new experience level is computed whenever
+you leave the dungeon (by the exit only, of course).
+
+TIME AND TURNS
+
+The time you spend in the dungeon is measured in
+"turns" of about 3 minutes each. The operations you
+can perform take the following numbers of turns:
+
+Walk one square: 1/4 turn
+
+Bust door (succeed or fail): 1/2 turn
+
+Cast spell: 1/2 turn
+
+Fight battle: 1 turn
+
+Kill sleeping or charmed monster: 1 turn
+Pick up treasure (search it out and pack it
+in your knapsack): 1/2 turn
+
+Some of the spells run for a certain number of
+turns, as specified in the tables.
+
+There is a 1/6 chance every 4 turns that a
+“random monster" will jump you. This can occur at
+any spot in the dungeon.
