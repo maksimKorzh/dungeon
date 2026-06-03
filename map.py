@@ -8,6 +8,7 @@ width, height = img.size
 map = []
 lines_x = []
 lines_y = []
+
 start_x = 28
 start_y = 14
 width_x = 26
@@ -59,9 +60,16 @@ for row in range(30):
 map.append([['.', 'w', 'o', 'o', 'o'] if i in range(1, 31) else ['.', 'o', 'o', 'o', 'o' ] for i in range(32)])
 map[-1][16] = ['x', 'e', 'o', 'o', 'o']
 
-for row in range(32):
-  for col in range(32):
-    if map[row][col][1] and map[row][col][2] != 'e': map[row][col][0] = '^'
-    if map[row][col][3] and map[row][col][4] != 'e': map[row][col][0] = '^'
+start_x = 28
+start_y = 26
+width_x = 26
+width_y = 24
+
+for row in range(30):
+  for col in range(30):
+    item_x = start_x+width_x*col
+    item_y = start_y+width_y*row
+    pixel = pixels[item_x, item_y]
+    if pixel[0] == 46: map[row+1][col+1][0] = '*'
 
 with open('map.json', 'w') as f: f.write(json.dumps(map, indent=2))
