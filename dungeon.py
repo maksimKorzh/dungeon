@@ -84,7 +84,6 @@ def print_cell(col, row, x, y):
               if dungeon[row][col][2] in 'eo' and dungeon[row][col][4] in 'eo':
                 screen.addch(r+y, c+x, ' ')
           except: pass
-        if r in range(1, 3) and c in range(1, 5): screen.addch(r+y, c+x, dungeon[row][col][0])
 
 def print_player(x, y):
   for r in range(2):
@@ -92,6 +91,9 @@ def print_player(x, y):
       screen.addch(r+y+1, c+x+1, PLAYER[r][c])
 
 def render_dungeon():
+  if dungeon[player_y+1][player_x+1][0] == '.':
+    screen.addstr(OFFSET_Y-5, OFFSET_X+3,     '   ROOM  ')
+  else: screen.addstr(OFFSET_Y-5, OFFSET_X+3, ' CORRIDOR')
   for row in range(3):
     for col in range(3):
       if row == 0 and col == 0 or \
