@@ -15,6 +15,23 @@ PLAYER = [
 ]
 
 with open('./map/map.json') as f: dungeon = json.loads(f.read())
+hidden_doors = [
+  [[14, 1, 4], [15, 1, 3]],
+  [[21, 2, 4], [22, 2, 3]],
+  [[7, 5, 4], [8, 5, 3]],
+  [[26, 12, 2], [26, 13, 1]],
+  [[7, 14, 2], [7, 15, 1]],
+  [[9, 16, 4], [10, 16, 3]],
+  [[10, 16, 4], [11, 16, 3]],
+  [[7, 19, 2], [7, 20, 1]],
+  [[27, 19, 4], [28, 19, 3]],
+  [[20, 22, 2], [20, 23, 1]],
+  [[5, 24, 4], [6, 24, 3]],
+  [[24, 25, 2], [24, 26, 1]],
+  [[11, 29, 2], [11, 30, 1]],
+  [[15, 29, 4], [16, 29, 3]],
+  [[28, 30, 4], [29, 30, 3]]
+]
 player_x = 15
 player_y = 29
 
@@ -26,6 +43,7 @@ def render_char(c):
     'W': '#',
     'D': '+',
     'S': '*',
+    '^': '#',
     'e': ' ',
     'o': ' '
   }[c]
@@ -108,10 +126,10 @@ def read_key():
   global player_x, player_y
   ch = -1
   while ch == -1: ch = screen.getch()
-  if ch == ord('j') and player_y < len(dungeon)-3 and dungeon[player_y+1][player_x+1][2] in 'ed': player_y += 1
-  elif ch == ord('k') and player_y > 0 and dungeon[player_y+1][player_x+1][1] in 'ed': player_y -= 1
-  elif ch == ord('h') and player_x > 0 and dungeon[player_y+1][player_x+1][3] in 'eD': player_x -= 1
-  elif ch == ord('l') and player_x < len(dungeon[0])-3 and dungeon[player_y+1][player_x+1][4] in 'eD': player_x += 1
+  if ch == curses.KEY_DOWN and player_y < len(dungeon)-3 and dungeon[player_y+1][player_x+1][2] in 'eds^': player_y += 1
+  elif ch == curses.KEY_UP and player_y > 0 and dungeon[player_y+1][player_x+1][1] in 'eds^': player_y -= 1
+  elif ch == curses.KEY_LEFT and player_x > 0 and dungeon[player_y+1][player_x+1][3] in 'eDS^': player_x -= 1
+  elif ch == curses.KEY_RIGHT and player_x < len(dungeon[0])-3 and dungeon[player_y+1][player_x+1][4] in 'eDS^': player_x += 1
   if ch == ord('q'):
     curses.endwin()
     sys.exit()
@@ -125,6 +143,13 @@ curses.start_color()
 curses.use_default_colors()
 curses.curs_set(0)
 
+def init_level():
+  for door_pair in hidden_doors:
+    if randrange(0, 7) != 3:
+      for door in door_pair:
+        dungeon[door[1]][door[0]][door[2]] = '^'
+
+init_level()
 while True:
   render_dungeon()
   read_key()
