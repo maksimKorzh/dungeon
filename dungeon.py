@@ -109,6 +109,7 @@ def print_player(x, y):
       screen.addch(r+y+1, c+x+1, PLAYER[r][c])
 
 def render_dungeon():
+  screen.addstr(OFFSET_Y+12, 0, ' ' * 80)
   if dungeon[player_y+1][player_x+1][0] == '.':
     screen.addstr(OFFSET_Y-5, OFFSET_X+3,     '   ROOM  ')
   else: screen.addstr(OFFSET_Y-5, OFFSET_X+3, ' CORRIDOR')
@@ -123,13 +124,31 @@ def render_dungeon():
   screen.refresh()
 
 def read_key():
-  global player_x, player_y
   ch = -1
-  while ch == -1: ch = screen.getch()
-  if ch == curses.KEY_DOWN and player_y < len(dungeon)-3 and dungeon[player_y+1][player_x+1][2] in 'eds^': player_y += 1
-  elif ch == curses.KEY_UP and player_y > 0 and dungeon[player_y+1][player_x+1][1] in 'eds^': player_y -= 1
-  elif ch == curses.KEY_LEFT and player_x > 0 and dungeon[player_y+1][player_x+1][3] in 'eDS^': player_x -= 1
-  elif ch == curses.KEY_RIGHT and player_x < len(dungeon[0])-3 and dungeon[player_y+1][player_x+1][4] in 'eDS^': player_x += 1
+  while ch == -1:
+    ch = screen.getch()
+  return ch
+
+def take_action():
+  global player_x, player_y
+  ch = read_key()
+  if ch == ord('b'):
+    screen.addstr(OFFSET_Y+12, OFFSET_X+3, 'What door?')
+    screen.refresh()
+    ch = read_key()
+    if randrange(0, 2):
+      if ch == curses.KEY_DOWN and dungeon[player_y+1][player_x+1][2] in 'ds^': player_y += 1
+      elif ch == curses.KEY_UP and dungeon[player_y+1][player_x+1][1] in 'ds^': player_y -= 1
+      elif ch == curses.KEY_LEFT and dungeon[player_y+1][player_x+1][3] in 'DS^': player_x -= 1
+      elif ch == curses.KEY_RIGHT and dungeon[player_y+1][player_x+1][4] in 'DS^': player_x += 1
+    else:
+      screen.addstr(OFFSET_Y+12, OFFSET_X, 'Breaking failed!')
+      screen.refresh()
+      ch = read_key()
+  elif ch == curses.KEY_DOWN and player_y < len(dungeon)-3 and dungeon[player_y+1][player_x+1][2] == 'e': player_y += 1
+  elif ch == curses.KEY_UP and player_y > 0 and dungeon[player_y+1][player_x+1][1] == 'e': player_y -= 1
+  elif ch == curses.KEY_LEFT and player_x > 0 and dungeon[player_y+1][player_x+1][3] == 'e': player_x -= 1
+  elif ch == curses.KEY_RIGHT and player_x < len(dungeon[0])-3 and dungeon[player_y+1][player_x+1][4] == 'e': player_x += 1
   if ch == ord('q'):
     curses.endwin()
     sys.exit()
@@ -152,4 +171,4 @@ def init_level():
 init_level()
 while True:
   render_dungeon()
-  read_key()
+  take_action()
