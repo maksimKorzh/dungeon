@@ -14,10 +14,6 @@ PLAYER = [
   '!_o_',
   ' _|*',
 ]
-CHEST = [
-  ' __ ',
-  '|__|'
-]
 
 with open('./map/map.json') as f: dungeon = json.loads(f.read())
 hidden_doors = [
@@ -37,7 +33,6 @@ hidden_doors = [
   [[15, 29, 4], [16, 29, 3]],
   [[28, 30, 4], [29, 30, 3]]
 ]
-loot = []
 player_x = 15
 player_y = 29
 
@@ -164,18 +159,7 @@ def take_action():
     curses.endwin()
     sys.exit()
 
-def create_loot(name, x, y, amount):
-  return {
-    'name': name,
-    'x': x,
-    'y': y,
-    'amount': amount
-  }
-
-def fill_dungeon():
-  pass
-
-def init_level():
+def init_hidden_doors():
   for door_pair in hidden_doors:
     if randrange(0, 7) != 3:
       for door in door_pair:
@@ -190,8 +174,7 @@ curses.start_color()
 curses.use_default_colors()
 curses.curs_set(0)
 
-init_level()
-#fill_dungeon()
+init_hidden_doors()
 while True:
   render_dungeon()
   take_action()
