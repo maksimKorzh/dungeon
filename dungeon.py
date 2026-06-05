@@ -5,8 +5,6 @@ import curses
 import string
 from random import randrange, choice
 
-ROWS = 24
-COLS = 80
 OFFSET_X = 32
 OFFSET_Y = 7
 FLOOR = '.'
